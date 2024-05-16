@@ -14,11 +14,18 @@
 
 - Logs created are iw_logfile and ping_logfile.
 
-- `wget https://raw.githubusercontent.com/FrameworkComputer/network-tester/main/network-tester.sh` (download script)
+- ```
+  wget https://raw.githubusercontent.com/FrameworkComputer/network-tester/main/network-tester.sh
+  ```
+  
+- ```
+  chmod +x network-tester.sh
+  ```
 
-- `chmod +x network-tester.sh`
-
-- `sh network-tester.sh` (allowing to run a full hour with the terminal open, can be put behind other windows, but needs to be open)
+- ```
+  sh network-tester.sh
+  ```
+(Run a full hour with the terminal open, can be put behind other windows, but needs to be open)
 
 
 ---------
@@ -29,6 +36,8 @@
 Kernel Version: 6.8.9-300.fc40.x86_64
 BIOS Version: 03.03
 Linux Distribution: Fedora release 40 (Forty)
+Device Brand: MEDIATEK Corp.
+Driver: mt7921e
 ---------------------------
 Thu May 16 11:19:52 AM PDT 2024:
 Connected to d8:8e:d4:7d:2e:c8 (on wlp5s0)
