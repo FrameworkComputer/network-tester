@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# MediaTek/Intel Wi-Fi Drop Tester 
-# V2.1
+# MediaTek/Intel Wi-Fi Drop Tester
+# v2.2
 # This basic script pings 8.8.8.8 every 60 seconds and runs a check of iw every 10 seconds to capture as much as possible.
 # If there is a drop or even a drop and it resumes, we should see it happen here. This will run for one hour.
 # You can stop it at any time with ctrl+c if you need to.
@@ -62,7 +62,7 @@ fi
 
 # Get network device brand and driver
 DEVICE_BRAND=$(sudo lshw -C network | grep -m 1 'vendor:' | awk -F ': ' '{print $2}')
-DRIVER=$(sudo lshw -C network | grep -i 'configuration:.*driver=' | awk -F 'driver=' '{print $2}' | awk '{print $1}')
+DRIVER=$(sudo lshw -C network | awk '/configuration:/{if ($0 ~ /driver=/) {print $0; exit}}' | sed -n 's/.*driver=\([^ ]*\).*/\1/p')
 
 # Append system information to the iw log file
 echo "Kernel Version: $KERNEL_VERSION" >> "$IW_LOG"
