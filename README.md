@@ -10,7 +10,9 @@
 
 - Function to install iw if not installed - it should be installed, but this is a fail-safe.
 
-Folks experiencing drops, please use this script, and you can attach both logs created after a full 60 minutes of running and provide this to support with this forum post as well.
+- Folks experiencing drops, please use this script, and you can attach both logs created after a full 60 minutes of running and provide this to support. 
+
+- Logs createed are iw_logfile and ping_logfile.
 
 - `wget https://github.com/FrameworkComputer/network-tester/blob/main/network-tester.sh` (download script)
 
