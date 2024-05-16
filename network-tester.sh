@@ -1,32 +1,35 @@
 #!/bin/bash
 
-# MediaTek/Intel Wi-Fi Drop Tester
+# MediaTek/Intel Wi-Fi Drop Tester 
+# V2.1
 # This basic script pings 8.8.8.8 every 60 seconds and runs a check of iw every 10 seconds to capture as much as possible.
 # If there is a drop or even a drop and it resumes, we should see it happen here. This will run for one hour.
 # You can stop it at any time with ctrl+c if you need to.
 
 # You will first see "iw is already installed", then it will move to your interface name two seconds later. Then the monitoring will take place for one hour or until you interrupt this.
 
-# Function to install iw if not installed - it should be installed, but this is a fail-safe.
-install_iw() {
-    if ! command -v iw &> /dev/null; then
-        echo "iw not found, installing..."
+# Function to install a package if not installed
+install_if_needed() {
+    local package=$1
+    if ! command -v $package &> /dev/null; then
+        echo "$package not found, installing..."
         if [ -f /etc/fedora-release ]; then
-            sudo dnf install -y iw
+            sudo dnf install -y $package
         elif [ -f /etc/lsb-release ]; then
             sudo apt-get update
-            sudo apt-get install -y iw
+            sudo apt-get install -y $package
         else
-            echo "Unsupported Linux distribution. Please install iw manually."
+            echo "Unsupported Linux distribution. Please install $package manually."
             exit 1
         fi
     else
-        echo "iw is already installed."
+        echo "$package is already installed."
     fi
 }
 
-# Install iw if necessary
-install_iw
+# Install iw and lshw if necessary
+install_if_needed iw
+install_if_needed lshw
 
 # Set the duration (in seconds) for which you want to monitor the WiFi
 MONITOR_DURATION=3600  # 1 hour
@@ -57,10 +60,16 @@ else
     DISTRO="Unknown"
 fi
 
+# Get network device brand and driver
+DEVICE_BRAND=$(sudo lshw -C network | grep -m 1 'vendor:' | awk -F ': ' '{print $2}')
+DRIVER=$(sudo lshw -C network | grep -i 'configuration:.*driver=' | awk -F 'driver=' '{print $2}' | awk '{print $1}')
+
 # Append system information to the iw log file
 echo "Kernel Version: $KERNEL_VERSION" >> "$IW_LOG"
 echo "BIOS Version: $BIOS_VERSION" >> "$IW_LOG"
 echo "Linux Distribution: $DISTRO" >> "$IW_LOG"
+echo "Device Brand: $DEVICE_BRAND" >> "$IW_LOG"
+echo "Driver: $DRIVER" >> "$IW_LOG"
 echo "---------------------------" >> "$IW_LOG"
 
 # Get the active WiFi interface name
