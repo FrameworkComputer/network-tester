@@ -1,5 +1,7 @@
 # MediaTek/Intel Wi-Fi Drop Tester
 
+- Auto-installs needed packages for Fedora OR Ubuntu. Not configured as is for other distros (minor tweaks needed for that).
+
 - This basic script pings 8.8.8.8 every 60 seconds and runs a check of iw every 10 seconds to capture as much as possible.
 
 - If there is a drop or even a drop and it resumes, we should see it happen here. This will run for one hour.
