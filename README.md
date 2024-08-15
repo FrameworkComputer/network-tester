@@ -34,9 +34,9 @@ sudo apt install curl -y
 
 **Then run:**
 
-- ```
-  curl -s https://raw.githubusercontent.com/FrameworkComputer/network-tester/main/network-tester.sh -o network-tester.sh && clear && sh network-tester.sh
-  ```
+ ```
+ curl -s https://raw.githubusercontent.com/FrameworkComputer/network-tester/main/network-tester.sh -o network-tester.sh && clear && sh network-tester.sh
+ ```
   
 (Run a full hour with the terminal open, can be put behind other windows, but needs to be open)
 
