@@ -16,17 +16,28 @@
 
 - Logs created are iw_logfile and ping_logfile.
 
-- ```
-  wget https://raw.githubusercontent.com/FrameworkComputer/network-tester/main/network-tester.sh
-  ```
-  
-- ```
-  chmod +x network-tester.sh
-  ```
+Curl should already be installed.
+
+But just in case:
+
+#### Fedora
+```
+sudo dnf install curl -y
+```
+
+or
+
+#### Ubuntu
+```
+sudo apt install curl -y
+```
+
+**Then run:**
 
 - ```
-  sh network-tester.sh
+  curl -s https://raw.githubusercontent.com/FrameworkComputer/network-tester/main/network-tester.sh -o network-tester.sh && clear && sh network-tester.sh
   ```
+  
 (Run a full hour with the terminal open, can be put behind other windows, but needs to be open)
 
 
