@@ -30,7 +30,7 @@ install_if_needed() {
 # Install iw and lshw if necessary
 install_if_needed iw
 install_if_needed lshw
-
+clear
 # Set the duration (in seconds) for which you want to monitor the WiFi
 MONITOR_DURATION=3600  # 1 hour
 
