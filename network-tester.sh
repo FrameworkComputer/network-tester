@@ -73,7 +73,7 @@ echo "Driver: $DRIVER" >> "$IW_LOG"
 echo "---------------------------" >> "$IW_LOG"
 
 # Get the active WiFi interface name
-interface=$(nmcli -t -f active,device d wifi list | grep '^yes' | cut -d':' -f2)
+interface=$(LC_ALL=en_US.utf8 nmcli -t -f active,device d wifi list | grep '^yes' | cut -d':' -f2)
 echo -e "\n        \033[1;33mInterface:\033[0m $interface"
 
 echo "Monitoring WiFi on interface $interface for $MONITOR_DURATION seconds. Logs are being saved to $IW_LOG and $PING_LOG."
